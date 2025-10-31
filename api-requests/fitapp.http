@@ -1,0 +1,47 @@
+POST http://localhost:8081/api/users/create
+Content-Type: application/json
+
+{
+  "email": "a.alakbarov7@gmail.com",
+  "password": "123456",
+  "firstName": "Anvar",
+  "lastName": "Alekperov"
+}
+
+###
+GET http://localhost:8081/api/users/149f6c6b-d510-4f3f-b87e-1243b0ef8259
+Accept: application/json
+
+###
+GET http://localhost:8081/api/users/149f6c6b-d510-4f3f-b87e-1243b0ef8259/validate
+Accept: application/json
+
+###
+
+POST http://localhost:8082/api/activities
+Content-Type: application/json
+
+{
+  "userId": "149f6c6b-d510-4f3f-b87e-1243b0ef8259",
+  "activityType": "CARDIO",
+  "duration": 30,
+  "calories": 300,
+  "startTime": "2025-10-25T13:30:12",
+  "additionalMetrics": {
+    "distance": 5.2,
+    "averageSpeed": 10.4,
+    "maxHeartRate": 165
+  }
+}
+
+###
+
+GET http://localhost:8082/api/activities
+X-User-ID: 149f6c6b-d510-4f3f-b87e-1243b0ef8259
+Accept: application/json
+
+###
+
+GET http://localhost:8082/api/activities/68fe02c17707191e914dbf01
+X-User-ID: 149f6c6b-d510-4f3f-b87e-1243b0ef8259
+Accept: application/json
