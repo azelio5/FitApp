@@ -1,0 +1,18 @@
+POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent
+X-goog-api-key: AIzaSyACV9GMsHNibma73mPCgKAmRHnpqsc9pRc
+Content-Type: application/json
+
+{
+  "contents": [
+    {
+      "parts": [
+        {
+          "text": "Расскажи как работает ИИ"
+        }
+      ]
+    }
+  ]
+}
+
+###
+

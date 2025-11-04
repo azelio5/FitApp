@@ -5,9 +5,12 @@ import com.anvar.fitapp.userservice.DTO.UserResponseDTO;
 import com.anvar.fitapp.userservice.exception.NotFoundException;
 import com.anvar.fitapp.userservice.model.User;
 import com.anvar.fitapp.userservice.repository.UserRepository;
+import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
+@Log4j2
 public class UserService {
 
     private final UserRepository repository;
@@ -18,6 +21,8 @@ public class UserService {
 
     public UserResponseDTO getUser(String userId) {
         User user = repository.findById(userId).orElseThrow(() -> new NotFoundException("User not found"));
+
+        log.info("User found: {}", user);
 
         return UserResponseDTO.builder()
                 .id(user.getId())
@@ -35,6 +40,7 @@ public class UserService {
     public UserResponseDTO create(RegisterRequestDTO registerRequestDTO) {
 
         if (repository.existsByEmail(registerRequestDTO.getEmail())) {
+            log.info("Email already exists");
             throw new RuntimeException("Email already exists");
         }
 
@@ -46,6 +52,8 @@ public class UserService {
                 .build();
 
         repository.save(user);
+
+        log.info("User created: {}", user);
 
         return UserResponseDTO.builder()
                 .id(user.getId())
@@ -60,6 +68,7 @@ public class UserService {
     }
 
     public Boolean existByUseId(String userId) {
+        log.info("Calling user validation API for userId: {}", userId);
         return repository.existsById(userId);
     }
 }
