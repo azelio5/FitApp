@@ -1,7 +1,6 @@
-package com.anvar.fitapp.userservice.DTO;
+package com.anvar.fitapp.gateway.user.DTO;
 
 
-import com.anvar.fitapp.userservice.model.UserRole;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -26,7 +25,7 @@ public class UserResponseDTO {
     private String firstName;
     private String lastName;
 
-   // private UserRole role;
+//    private UserRole role;
 
     private LocalDateTime createdAt;
 

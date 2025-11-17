@@ -22,9 +22,14 @@ public class UserController {
         return ResponseEntity.ok(userService.getUser(userId));
     }
 
+//    @GetMapping("/{userId}/validate")
+//    public ResponseEntity<Boolean> validateUser(@PathVariable("userId") String userId) {
+//        return ResponseEntity.ok(userService.existByUseId(userId));
+//    }
+
     @GetMapping("/{userId}/validate")
     public ResponseEntity<Boolean> validateUser(@PathVariable("userId") String userId) {
-        return ResponseEntity.ok(userService.existByUseId(userId));
+        return ResponseEntity.ok(userService.existByKeycloakId(userId));
     }
 
     @PostMapping("/create")

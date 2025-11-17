@@ -22,6 +22,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
+    @Column(name = "keycloak_id", unique = true)
+    private String keycloakId;
+
     @Column(unique = true, nullable = false)
     private String email;
 
@@ -32,9 +35,9 @@ public class User {
     private String firstName;
     private String lastName;
 
-    @Enumerated(EnumType.STRING)
-    @Builder.Default
-    private UserRole role = UserRole.USER;
+//    @Enumerated(EnumType.STRING)
+//    @Builder.Default
+//    private UserRole role = UserRole.USER;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
